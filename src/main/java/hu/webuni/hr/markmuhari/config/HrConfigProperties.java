@@ -50,33 +50,33 @@ public class HrConfigProperties {
     }
 
     public static class Smart {
-        private int tenYearsPercent;
-        private int fiveYearsPercent;
-        private int twoYearsPercent;
+        private int maxPaymentRaisePercentage;
+        private int mediumPaymentRaisePercentage;
+        private int minPaymentRaisePercentage;
         private Limit limit = new Limit();
 
-        public int getTenYearsPercent() {
-            return tenYearsPercent;
+        public int getMaxPaymentRaisePercentage() {
+            return maxPaymentRaisePercentage;
         }
 
-        public void setTenYearsPercent(int tenYearsPercent) {
-            this.tenYearsPercent = tenYearsPercent;
+        public void setMaxPaymentRaisePercentage(int maxPaymentRaisePercentage) {
+            this.maxPaymentRaisePercentage = maxPaymentRaisePercentage;
         }
 
-        public int getFiveYearsPercent() {
-            return fiveYearsPercent;
+        public int getMediumPaymentRaisePercentage() {
+            return mediumPaymentRaisePercentage;
         }
 
-        public void setFiveYearsPercent(int fiveYearsPercent) {
-            this.fiveYearsPercent = fiveYearsPercent;
+        public void setMediumPaymentRaisePercentage(int mediumPaymentRaisePercentage) {
+            this.mediumPaymentRaisePercentage = mediumPaymentRaisePercentage;
         }
 
-        public int getTwoYearsPercent() {
-            return twoYearsPercent;
+        public int getMinPaymentRaisePercentage() {
+            return minPaymentRaisePercentage;
         }
 
-        public void setTwoYearsPercent(int twoYearsPercent) {
-            this.twoYearsPercent = twoYearsPercent;
+        public void setMinPaymentRaisePercentage(int minPaymentRaisePercentage) {
+            this.minPaymentRaisePercentage = minPaymentRaisePercentage;
         }
 
         public Limit getLimit() {
@@ -89,42 +89,35 @@ public class HrConfigProperties {
     }
 
     public static class Limit {
-        private int tenYears;
-        private int fiveYears;
-        private int twoYears;
-        private int sixMonths;
+        private int maxYearsOfPaymentRaise;
+        private int medYearsOfPaymentRaise;
+        private int minMonthsOfPaymentRaise;
 
-        public int getTenYears() {
-            return tenYears;
+
+        public int getMaxYearsOfPaymentRaise() {
+            return maxYearsOfPaymentRaise;
         }
 
-        public void setTenYears(int tenYears) {
-            this.tenYears = tenYears;
+        public void setMaxYearsOfPaymentRaise(int maxYearsOfPaymentRaise) {
+            this.maxYearsOfPaymentRaise = maxYearsOfPaymentRaise;
         }
 
-        public int getFiveYears() {
-            return fiveYears;
+        public int getMedYearsOfPaymentRaise() {
+            return medYearsOfPaymentRaise;
         }
 
-        public void setFiveYears(int fiveYears) {
-            this.fiveYears = fiveYears;
+        public void setMedYearsOfPaymentRaise(int medYearsOfPaymentRaise) {
+            this.medYearsOfPaymentRaise = medYearsOfPaymentRaise;
         }
 
-        public int getTwoYears() {
-            return twoYears;
+        public int getMinMonthsOfPaymentRaise() {
+            return minMonthsOfPaymentRaise;
         }
 
-        public void setTwoYears(int twoYears) {
-            this.twoYears = twoYears;
+        public void setMinMonthsOfPaymentRaise(int minMonthsOfPaymentRaise) {
+            this.minMonthsOfPaymentRaise = minMonthsOfPaymentRaise;
         }
 
-        public int getSixMonths() {
-            return sixMonths;
-        }
-
-        public void setSixMonths(int sixMonths) {
-            this.sixMonths = sixMonths;
-        }
     }
 
 

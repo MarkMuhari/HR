@@ -8,6 +8,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 
 @SpringBootApplication
 public class HrApplication implements CommandLineRunner {
@@ -21,15 +23,13 @@ public class HrApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        LocalDateTime time = LocalDateTime.of(2011, 3, 21, 10, 10);
-        LocalDateTime time2 = LocalDateTime.of(2019, 3, 21, 10, 10);
-        LocalDateTime time3 = LocalDateTime.of(2016, 3, 21, 10, 10);
+        LocalDateTime time = LocalDateTime.of(2011, 3, 25, 0, 0);
+        LocalDateTime time2 = LocalDateTime.of(2018, 9, 25, 0, 0);
+        LocalDateTime time3 = LocalDateTime.of(2016, 3, 25, 0, 0);
 
         Employee employee = new Employee(001, "Jack", "programers", 20_000, time);
         Employee employee2 = new Employee(002, "Joe", "builder", 20_000, time2);
         Employee employee3 = new Employee(002, "Jane", "coder", 20_000, time3);
-        LocalDateTime dateTime = LocalDateTime.now().plusYears(-10).plusMonths(0).plusDays(0);
-        System.out.println(employee2.getStartingDate().isBefore(dateTime));
 
         System.out.println(employee.getName() + ": " + salaryService.getFinalPay(employee));
         System.out.println(employee2.getName() + ": " + salaryService.getFinalPay(employee2));
