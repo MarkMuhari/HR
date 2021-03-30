@@ -1,10 +1,8 @@
 package hu.webuni.hr.markmuhari.web;
 
 import hu.webuni.hr.markmuhari.dto.EmployeeDto;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -32,9 +30,45 @@ public class HrController {
         return new ArrayList<>(employees.values());
     }
 
+    @GetMapping("/rich")
+    @ResponseBody
+    public List<EmployeeDto> getAllIfPaysMoreThenQueryPay(@RequestParam int pays) {
+        List<EmployeeDto> results = new ArrayList<>();
+        for (EmployeeDto employeeDto : employees.values()) {
+            if (employeeDto.getMonthlyPay() > pays)
+                results.add(employeeDto);
+        }
+        return results;
+    }
+
     @GetMapping("/{id}")
-    public EmployeeDto getById(@PathVariable long id) {
-        return employees.get(id);
+    public ResponseEntity<EmployeeDto> getById(@PathVariable long id) {
+        EmployeeDto employeeDto = employees.get(id);
+        if (employeeDto != null)
+            return ResponseEntity.ok(employeeDto);
+        else
+            return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping
+    public EmployeeDto createEmployee(@RequestBody EmployeeDto employeeDto) {
+        employees.put(employeeDto.getId(), employeeDto);
+        return employeeDto;
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EmployeeDto> modifyEmployee(@RequestBody EmployeeDto employeeDto, @PathVariable long id) {
+        if (!employees.containsKey(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        employeeDto.setId(id);
+        employees.put(id, employeeDto);
+        return ResponseEntity.ok(employeeDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteEmployee(@PathVariable long id) {
+        employees.remove(id);
     }
 
 }
