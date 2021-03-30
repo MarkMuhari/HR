@@ -1,20 +1,20 @@
-package hu.webuni.hr.markmuhari.model;
+package hu.webuni.hr.markmuhari.dto;
 
 import java.time.LocalDateTime;
 
-public class Employee {
+public class EmployeeDto {
 
-    private long Id;
+    private long id;
     private String name;
     private String assignment;
     private int monthlyPay;
     private LocalDateTime startingDate;
 
-    public Employee() {
+    public EmployeeDto() {
     }
 
-    public Employee(long id, String name, String assignment, int monthlyPay, LocalDateTime startingDate) {
-        this.Id = id;
+    public EmployeeDto(long id, String name, String assignment, int monthlyPay, LocalDateTime startingDate) {
+        this.id = id;
         this.name = name;
         this.assignment = assignment;
         this.monthlyPay = monthlyPay;
@@ -22,11 +22,11 @@ public class Employee {
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        this.Id = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -59,16 +59,5 @@ public class Employee {
 
     public void setStartingDate(LocalDateTime startingDate) {
         this.startingDate = startingDate;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + Id +
-                ", name='" + name + '\'' +
-                ", assignment='" + assignment + '\'' +
-                ", monthlyPay=" + monthlyPay +
-                ", startingDate=" + startingDate +
-                '}';
     }
 }
