@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.Period;
+import java.time.temporal.ChronoUnit;
 
 @Service
 public class SmartEmployeeService implements EmployeeService {
@@ -20,21 +20,15 @@ public class SmartEmployeeService implements EmployeeService {
 
         HrConfigProperties.Smart smart = config.getSalary().getSmart();
 
-        LocalDateTime employeeStartingDate = employee.getStartingDate();
+        double employeeYearsWorked = ChronoUnit.DAYS.between(employee.getStartingDate(), LocalDateTime.now()) / 365.0;
 
-        LocalDateTime now = LocalDateTime.now();
-
-        if (Period.between(employeeStartingDate.toLocalDate(), now.toLocalDate()).getYears() >=
-                smart.getLimit().getMaxYearsOfPaymentRaise()) {
-
+        if ((employeeYearsWorked) > smart.getMaxYearsOfPaymentRaise()) {
             results = smart.getMaxPaymentRaisePercentage();
 
-        } else if (Period.between(employeeStartingDate.toLocalDate(), now.toLocalDate()).getYears() >=
-                smart.getLimit().getMedYearsOfPaymentRaise()) {
-
+        } else if (employeeYearsWorked > smart.getMedYearsOfPaymentRaise()) {
             results = smart.getMediumPaymentRaisePercentage();
-        } else if (Period.between(employeeStartingDate.toLocalDate(), now.toLocalDate()).toTotalMonths() >=
-                smart.getLimit().getMinMonthsOfPaymentRaise()) {
+
+        } else if (employeeYearsWorked > smart.getMinYearsOfPaymentRaise()) {
             results = smart.getMinPaymentRaisePercentage();
         }
         return results;

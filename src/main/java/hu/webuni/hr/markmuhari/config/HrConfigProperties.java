@@ -50,10 +50,15 @@ public class HrConfigProperties {
     }
 
     public static class Smart {
+
         private int maxPaymentRaisePercentage;
         private int mediumPaymentRaisePercentage;
         private int minPaymentRaisePercentage;
-        private Limit limit = new Limit();
+
+        private double maxYearsOfPaymentRaise;
+        private double medYearsOfPaymentRaise;
+        private double minYearsOfPaymentRaise;
+
 
         public int getMaxPaymentRaisePercentage() {
             return maxPaymentRaisePercentage;
@@ -79,45 +84,29 @@ public class HrConfigProperties {
             this.minPaymentRaisePercentage = minPaymentRaisePercentage;
         }
 
-        public Limit getLimit() {
-            return limit;
-        }
-
-        public void setLimit(Limit limit) {
-            this.limit = limit;
-        }
-    }
-
-    public static class Limit {
-        private int maxYearsOfPaymentRaise;
-        private int medYearsOfPaymentRaise;
-        private int minMonthsOfPaymentRaise;
-
-
-        public int getMaxYearsOfPaymentRaise() {
+        public double getMaxYearsOfPaymentRaise() {
             return maxYearsOfPaymentRaise;
         }
 
-        public void setMaxYearsOfPaymentRaise(int maxYearsOfPaymentRaise) {
+        public void setMaxYearsOfPaymentRaise(double maxYearsOfPaymentRaise) {
             this.maxYearsOfPaymentRaise = maxYearsOfPaymentRaise;
         }
 
-        public int getMedYearsOfPaymentRaise() {
+        public double getMedYearsOfPaymentRaise() {
             return medYearsOfPaymentRaise;
         }
 
-        public void setMedYearsOfPaymentRaise(int medYearsOfPaymentRaise) {
+        public void setMedYearsOfPaymentRaise(double medYearsOfPaymentRaise) {
             this.medYearsOfPaymentRaise = medYearsOfPaymentRaise;
         }
 
-        public int getMinMonthsOfPaymentRaise() {
-            return minMonthsOfPaymentRaise;
+        public double getMinYearsOfPaymentRaise() {
+            return minYearsOfPaymentRaise;
         }
 
-        public void setMinMonthsOfPaymentRaise(int minMonthsOfPaymentRaise) {
-            this.minMonthsOfPaymentRaise = minMonthsOfPaymentRaise;
+        public void setMinYearsOfPaymentRaise(double minYearsOfPaymentRaise) {
+            this.minYearsOfPaymentRaise = minYearsOfPaymentRaise;
         }
-
     }
 
 

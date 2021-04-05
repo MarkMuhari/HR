@@ -14,8 +14,9 @@ public class SalaryService {
         this.employeeService = employeeService;
     }
 
-    public int getFinalPay(Employee employee) {
-        return (int) (employee.getMonthlyPay() / 100.0 * (100 + employeeService.getPayRaisePercent(employee)));
+    public void setFinalPay(Employee employee) {
+        int finalyPay = (int) (employee.getMonthlyPay() / 100.0 * (100 + employeeService.getPayRaisePercent(employee)));
+        employee.setMonthlyPay(finalyPay);
     }
 
 

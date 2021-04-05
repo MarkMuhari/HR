@@ -8,7 +8,8 @@
 
 <h1>List of HR employees</h1>
 
-<table>
+<table border>
+    <thead>
     <tr>
         <th>ID</th>
         <th>Name</th>
@@ -16,6 +17,7 @@
         <th>monthly pay</th>
         <th>starting day</th>
     </tr>
+    <tbody>
     <tr th:each="employee : ${employees}">
         <td th:text="${employee.id}">ID</td>
         <td th:text="${employee.name}">Kis Pista</td>
@@ -24,10 +26,11 @@
         <td th:text="${employee.startingDate}">2020-03-25T 00:00</td>
     </tr>
 </table>
+
 <br/>
-<form th:action="@{/employees}" method="post" th:object="${addEmployee}" >
-    <input type="hidden" th:field="*{id}"/>
-<!--        <input type="text" th:field="*{id}" value="1"/>-->
+<form th:action="@{/employees}" method="post" th:object="${addEmployee}">
+    <!--    <input type="hidden" th:field="*{id}"/>-->
+    <input type="text" th:field="*{id}" value="1"/>
 
     <label>Name:</label>
     <input type="text" th:field="*{name}" value="Kiss Péter"/>
@@ -39,7 +42,7 @@
     <input type="number" th:field="*{monthlyPay}" value="20000"/>
 
     <label>Starting date:</label>
-    <input type="datetime-local" th:field="*{startingDate}" value="20000"/>
+    <input th:field="*{startingDate}" value="20000"/>
 
     <input type="submit" value="Add"/>
 </form>

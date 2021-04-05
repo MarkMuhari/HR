@@ -30,7 +30,7 @@ public class HrController {
         return new ArrayList<>(employees.values());
     }
 
-    @GetMapping("/rich")
+    @GetMapping(params = "pays")
     @ResponseBody
     public List<EmployeeDto> getAllIfPaysMoreThenQueryPay(@RequestParam int pays) {
         List<EmployeeDto> results = new ArrayList<>();
